@@ -85,3 +85,6 @@ Run the project and navigate through the web pages provided to interact with the
 Contributors
 
 Include your group's IDs and names here
+
+![image](https://github.com/user-attachments/assets/6f0687a8-b34e-4fdb-9f55-ad683b1862b2)
+
