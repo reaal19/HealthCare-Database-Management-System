@@ -1,0 +1,77 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterPage.master.cs" Inherits="AdminMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table class="auto-style1">
+            <tr>
+                <td style="text-align: center">
+                    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="X-Large" Font-Underline="True" ForeColor="#CC0000" Text="Welcome To (FUE)"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="auto-style1">
+                        <tr>
+                            <td>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AdminHome.aspx">Home</asp:HyperLink>
+                            </td>
+                            <td>
+                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/TeachersList.aspx">TeachersList</asp:HyperLink>
+                            </td>
+                            <td>
+                                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/StudentsByGender.aspx">StudentListByGender</asp:HyperLink>
+                            </td>
+                            <td>
+                                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Salary.aspx">TotalSalary</asp:HyperLink>
+                            </td>
+                            <td>
+                                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Signin.aspx">SignOut</asp:HyperLink>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2"><strong>Copy Rights Reserved-FUE</strong></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    </form>
+</body>
+</html>

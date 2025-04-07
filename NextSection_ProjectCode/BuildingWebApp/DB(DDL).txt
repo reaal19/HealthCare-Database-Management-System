@@ -1,0 +1,75 @@
+
+CREATE TABLE Student 
+(Student_ID INT  CONSTRAINT STUDENT_ID_PK PRIMARY KEY,
+ Student_Fname nvarchar(10) CONSTRAINT STUDENT_FNAME_NN NOT NULL ,
+ SEX NCHAR(1) CONSTRAINT STUDENT_SEX_CH CHECK((SEX='F')OR(SEX='M')),
+ Student_lname nvarchar(10),
+ Student_Bdate datetime);
+
+                  /*OTHER WAY OF ADDING CONSTRAINT AFTER TABLE CREATION */
+
+-- ALTER TABLE student ADD CONSTRAINT c1 primary key(Student_ID)
+
+                   /*add column to TABLE ARTER CREATION */
+--alter table Student
+--add  Student_Fax nvarchar(10) unique  
+
+
+                                   /*create the class table*/
+ CREATE TABLE Class
+(Class_Name nvarchar(10) CONSTRAINT CLASS_NAME_PK PRIMARY KEY,
+ Class_Floor nvarchar(10),
+   ) ;
+
+                                     /*create teacher table*/
+CREATE TABLE Teacher 
+
+(Teacher_SSN INT CONSTRAINT TEACHER_SSN_PK PRIMARY KEY,
+ Teacher_Fname nvarchar(10) CONSTRAINT STUDENT_FNAME_UN UNIQUE ,
+ Teacher_Lname nvarchar(10),
+ Teacher_sex nvarchar(10),
+ Teacher_SALARY DECIMAL (7,2),
+ CONSTRAINT TEACHER_SALARY_CH CHECK ((Teacher_SALARY>=1000)AND(Teacher_SALARY<=10000))
+ );
+
+                     /*create the teacher/class table*/
+
+CREATE TABLE Teacher_Class
+(Teacher_SSN INT,
+ Class_Name nvarchar(10),
+ No_Of_Subjects INT,
+ CONSTRAINT No_Of_Subjects_CH  CHECK  (( No_Of_Subjects>=1)AND( No_Of_Subjects<=3)),
+ CONSTRAINT TEACHER_ESSN_CLASS_NAME_PRIMARYKEY PRIMARY KEY (Teacher_SSN, Class_Name)
+ );
+
+
+                              /*create teacher telephone table MULTIVALUE ATTRIBUTE*/
+CREATE TABLE Teacher_Telephone
+(Teacher_SSN INT,
+ Telephone_Number nvarchar(10),
+ CONSTRAINT TEACHER_ESSN_TELEPHONE_NUMBER_PK PRIMARY KEY (Teacher_SSN,Telephone_Number)
+);
+
+
+
+ALTER TABLE Teacher_Class ADD CONSTRAINT Teacher_SSN_FK FOREIGN KEY (Teacher_SSN) REFERENCES Teacher(Teacher_SSN);
+ALTER TABLE Teacher_Class ADD CONSTRAINT Class_Name_FK FOREIGN KEY (Class_Name) REFERENCES Class(Class_Name);
+ALTER TABLE Teacher_Telephone ADD CONSTRAINT Teacher_SSN_FK1 FOREIGN KEY (Teacher_SSN) REFERENCES Teacher(Teacher_SSN);
+ALTER TABLE Student add Class_Name nvarchar(10);
+ALTER TABLE Student ADD CONSTRAINT Class_Name_FK1 FOREIGN KEY (Class_Name) REFERENCES Class(Class_Name);
+insert into teacher
+values (1,'prof.Awad','Khalil','m',1000);  
+
+insert into teacher values (2,'En.mohamed','mahmoud','m',1000);
+insert into teacher values(3,'E.mohamed','attia','m',1000);
+insert into teacher values(4,'En.maha','farghaly','f',1000)  ; 
+
+
+insert into student
+values (1,'mostafa','M','ziad','1/1/2000','Class A');
+insert into student
+values (2,'mona','F','ahmed','1/2/2001','Class A');
+insert into student
+values (3,'karem','M','tarek','10/1/1998','Class A');
+insert into student
+values (4,'ahmad','M','ahmed','1/1/1999','Class A');
